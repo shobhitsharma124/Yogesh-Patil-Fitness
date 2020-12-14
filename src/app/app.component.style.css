@@ -1,0 +1,17 @@
+.rounded-circle {
+  padding: 20px;
+  margin: auto;
+}
+.logo {
+  width: 100%;
+}
+
+.header-text h2 {
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.header-text h2 span {
+  padding: 10px;
+  color: #000000;
+}

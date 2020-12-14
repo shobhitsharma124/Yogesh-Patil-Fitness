@@ -1,0 +1,118 @@
+<div class="container border border-2 pt-4">
+  <div class="row mb-4 col-12">
+    <select
+      class="form-control col-12 col-sm-6 col-md-3 mt-1 mr-1"
+      (change)="onSelectTrainer($event)"
+    >
+      <option value="All" class="btn-outline-primary">All</option>
+      <option value="no-preference" class="btn-outline-primary">
+        No Preference
+      </option>
+      <option value="Male" class="btn-outline-primary">Male</option>
+      <option value="Female" class="btn-outline-primary">Female</option>
+    </select>
+    <button
+      class="col-12 col-sm-6 col-md-3 btn btn-outline-primary my-0 mt-1"
+      type="button"
+      (click)="onSearch()"
+    >
+      Search
+    </button>
+  </div>
+
+  <div class="row">
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th class="h1" style="font-size: 20px">Sl NO</th>
+            <th class="h2" style="font-size: 20px">Name</th>
+            <th class="h3" style="font-size: 20px">Address</th>
+            <th class="h4" style="font-size: 20px">City</th>
+            <th class="h5" style="font-size: 20px">Package</th>
+            <th class="h6" style="font-size: 20px">Trainer Preference</th>
+            <th class="h7 h6" style="font-size: 20px">Phone</th>
+            <td></td>
+          </tr>
+        </thead>
+        <tbody *ngIf="users?.length > 0">
+          <tr
+            *ngFor="let user of localUsers; let i = index"
+            [ngClass]="{ 'table-info': i % 2 == 0 ? true : false }"
+          >
+            <th scope="row">{{ user.id }}</th>
+            <td>{{ user.firstname }} {{ user.lastname }}</td>
+            <td>{{ user.streetaddress }}</td>
+            <td>{{ user.city }}</td>
+            <td>{{ user.packages }}</td>
+            <td>{{ user.trainerpreference }}</td>
+            <td>{{ user.phonenumber }}</td>
+            <td>
+              <button
+                class="btn btn-outline-primary btn-block"
+                (click)="editAppointment(user.id)"
+              >
+                Edit
+              </button>
+            </td>
+            <td>
+              <button
+                class="btn btn-outline-danger btn-block"
+                data-toggle="modal"
+                data-target="#modalDelete"
+                type="button"
+                name="delete"
+                id="delete"
+                (click)="setId(user.id)"
+              >
+                Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <h5 *ngIf="!users">
+        Loading... if takes to long check internet connectivity
+      </h5>
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal fade"
+  id="modalDelete"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="modelTitleId"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Are you sure you want to delete appointment</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">Once delete it can not be recovered.</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Close
+        </button>
+        <button
+          type="button"
+          class="btn btn-danger"
+          (click)="deleteAppointment()"
+          data-dismiss="modal"
+        >
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

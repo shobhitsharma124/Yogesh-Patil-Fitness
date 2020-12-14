@@ -1,0 +1,374 @@
+<div class="container" *ngIf="loadingComplete">
+  <form [formGroup]="fitnessForm" (ngSubmit)="onSubmit()" novalidate>
+    <div class="row col-12 pt-3">
+      <p class="h4 mb-4 mx-auto">Place Appointments</p>
+    </div>
+    <hr />
+    <div class="row">
+      <div class="col-6">
+        <!-- * First Name -->
+        <div class="form-group">
+          <label for="Inputfirstname">First Name</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="firstname"
+            placeholder="First Name"
+            autofocus
+          />
+          <small
+            class="form-text text-danger"
+            *ngIf="
+              (fitnessForm.controls.firstname.touched ||
+                fitnessForm.controls.firstname.dirty) &&
+              fitnessForm.controls.firstname.errors?.required
+            "
+          >
+            Please enter first name.!
+          </small>
+        </div>
+      </div>
+      <div class="col-6">
+        <!-- * Last Name -->
+        <div class="form-group">
+          <label for="Inputlastname">Last Name</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="lastname"
+            placeholder="Last Name"
+          />
+          <small
+            class="form-text text-danger"
+            *ngIf="
+              (fitnessForm.controls.lastname.touched ||
+                fitnessForm.controls.lastname.dirty) &&
+              fitnessForm.controls.lastname.errors?.required
+            "
+          >
+            Please enter last name.!
+          </small>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <!-- * Age -->
+      <div class="form-group col-3">
+        <label for="Inputage">Age</label>
+        <input
+          type="number"
+          class="form-control"
+          formControlName="age"
+          placeholder="Age"
+        />
+        <small
+          class="form-text text-danger"
+          *ngIf="
+            (fitnessForm.controls.age.touched ||
+              fitnessForm.controls.age.dirty) &&
+            fitnessForm.controls.age.errors
+          "
+        >
+          Please enter age.! must be 18-60.!
+        </small>
+      </div>
+
+      <!-- * Phone Number -->
+      <div class="form-group col-9">
+        <label for="Inputphonenumber">Phone Number</label>
+        <input
+          type="number"
+          class="form-control"
+          formControlName="phonenumber"
+          placeholder="Phone Number"
+        />
+        <small
+          class="form-text text-danger"
+          *ngIf="
+            (fitnessForm.controls.phonenumber.touched ||
+              fitnessForm.controls.phonenumber.dirty) &&
+            fitnessForm.controls.phonenumber.errors?.required
+          "
+        >
+          Please enter phone number.!
+        </small>
+      </div>
+    </div>
+
+    <div class="row">
+      <!-- * Email -->
+      <div class="form-group col-12">
+        <label for="Inputemail">Email</label>
+        <input
+          type="email"
+          class="form-control"
+          formControlName="email"
+          placeholder="Email"
+        />
+        <small
+          class="form-text text-danger"
+          *ngIf="
+            fitnessForm.controls.email.touched &&
+            fitnessForm.controls.email.errors?.required
+          "
+        >
+          Please enter email.!
+        </small>
+        <small
+          class="form-text text-danger"
+          *ngIf="
+            (fitnessForm.controls.email.touched ||
+              fitnessForm.controls.email.dirty) &&
+            fitnessForm.controls.email.errors?.email
+          "
+        >
+          Enter the valid email .!
+        </small>
+      </div>
+    </div>
+
+    <fieldset class="form-group border border-secondary p-4 rounded">
+      <!-- * Street Address -->
+      <div class="form-group row">
+        <label for="Inputstreetaddress">Street Address</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="streetaddress"
+          placeholder="Street Address"
+        />
+        <small
+          class="form-text text-danger"
+          *ngIf="
+            (fitnessForm.controls.streetaddress.touched ||
+              fitnessForm.controls.streetaddress.dirty) &&
+            fitnessForm.controls.streetaddress.errors?.required
+          "
+        >
+          Please enter Street Address.!
+        </small>
+      </div>
+      <div class="row">
+        <!-- * City -->
+        <div class="form-group col-md-4">
+          <label for="Inputcity">City</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="city"
+            placeholder="City"
+          />
+          <small
+            class="form-text text-danger"
+            *ngIf="
+              (fitnessForm.controls.city.touched ||
+                fitnessForm.controls.city.dirty) &&
+              fitnessForm.controls.city.errors?.required
+            "
+          >
+            Please enter City.!
+          </small>
+        </div>
+
+        <!-- * State -->
+        <div class="form-group col-md-4">
+          <label for="Inputstate">State</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="state"
+            placeholder="State"
+          />
+          <small
+            class="form-text text-danger"
+            *ngIf="
+              (fitnessForm.controls.state.touched ||
+                fitnessForm.controls.state.dirty) &&
+              fitnessForm.controls.state.errors?.required
+            "
+          >
+            Please enter State.!
+          </small>
+        </div>
+
+        <!-- * Country -->
+        <div class="form-group col-md-4">
+          <label for="Inputcountry">Country</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="country"
+            placeholder="Country"
+          />
+          <small
+            class="form-text text-danger"
+            *ngIf="
+              (fitnessForm.controls.country.touched ||
+                fitnessForm.controls.country.dirty) &&
+              fitnessForm.controls.country.errors?.required
+            "
+          >
+            Please enter Country.!
+          </small>
+        </div>
+      </div>
+      <div class="row">
+        <!-- * Pincode -->
+        <div class="form-group col-md-4">
+          <label for="Inputpincode">Pincode</label>
+          <input
+            type="number"
+            class="form-control"
+            formControlName="pincode"
+            placeholder="Pincode"
+          />
+          <small
+            class="form-text text-danger"
+            *ngIf="
+              (fitnessForm.controls.pincode.touched ||
+                fitnessForm.controls.pincode.dirty) &&
+              fitnessForm.controls.pincode.errors?.required
+            "
+          >
+            Please enter Pincode.!
+          </small>
+        </div>
+      </div>
+    </fieldset>
+
+    <div class="row">
+      <div class="col-md-6">
+        <!-- * Trainer Preference -->
+        <div class="form-group">
+          <label for="Inputtrainerpreference">Trainer Preference</label>
+          <select
+            class="form-control"
+            formControlName="trainerpreference"
+            placeholder="Trainer Preference"
+          >
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="no-preference">No Preference</option>
+          </select>
+          <small
+            class="form-text text-danger"
+            *ngIf="
+              (fitnessForm.controls.trainerpreference.touched ||
+                fitnessForm.controls.trainerpreference.dirty) &&
+              fitnessForm.controls.trainerpreference.errors?.required
+            "
+          >
+            Please enter Trainer Preference.!
+          </small>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <!-- * Physiotherapist -->
+        <div class="form-group">
+          <label for="Inputphysiotherapist">Physiotherapist</label>
+          <select
+            class="form-control"
+            formControlName="physiotherapist"
+            placeholder="Physiotherapist"
+          >
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+          </select>
+          <small
+            class="form-text text-danger"
+            *ngIf="
+              (fitnessForm.controls.physiotherapist.touched ||
+                fitnessForm.controls.physiotherapist.dirty) &&
+              fitnessForm.controls.physiotherapist.errors?.required
+            "
+          >
+            Please enter Physiotherapist.!
+          </small>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <!-- * Packages -->
+        <div class="form-group">
+          <label for="Inputpackages">Packages</label>
+          <select
+            class="form-control"
+            formControlName="packages"
+            placeholder="Packages"
+            (change)="onChangePrice($event)"
+          >
+            <option value="100">100</option>
+            <option value="500">500</option>
+            <option value="1000">1000</option>
+            <option value="1500">1500</option>
+          </select>
+          <small
+            class="form-text text-danger"
+            *ngIf="
+              (fitnessForm.controls.packages.touched ||
+                fitnessForm.controls.packages.dirty) &&
+              fitnessForm.controls.packages.errors?.required
+            "
+          >
+            Please enter Packages.!
+          </small>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <!-- * inr -->
+        <div class="form-group">
+          <label for="Inputinr">Inr</label>
+          <input
+            type="number"
+            class="form-control"
+            formControlName="inr"
+            disabled
+            [(ngModel)]="rupees"
+          />
+          <small
+            class="form-text text-danger"
+            *ngIf="
+              (fitnessForm.controls.inr.touched ||
+                fitnessForm.controls.inr.dirty) &&
+              fitnessForm.controls.inr.errors
+            "
+          >
+            Please enter Inr.!
+          </small>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <!-- * paisa -->
+        <div class="form-group">
+          <label for="Inputpaisa">Paisa</label>
+          <input
+            type="number"
+            class="form-control"
+            formControlName="paisa"
+            placeholder="0"
+            value="0"
+            disabled
+          />
+          <small
+            class="form-text text-danger"
+            *ngIf="
+              (fitnessForm.controls.paisa.touched ||
+                fitnessForm.controls.paisa.dirty) &&
+              fitnessForm.controls.paisa.errors
+            "
+          >
+            Please enter Paisa.! max value : 99
+          </small>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 col-sm-5 mx-auto">
+        <button class="btn btn-block btn-primary" type="submit">Submit</button>
+      </div>
+    </div>
+  </form>
+</div>
